@@ -1,3 +1,108 @@
 <resources>
     <string name="app_name">GuiaPA</string>
+
+    <string name="biz_1_name">Costela no Bafo</string>
+    <string name="biz_1_desc">A mais tradicional costela da região, ambiente familiar e pratos fartos.</string>
+    <string name="biz_1_address">R. Cel. Otávio Meyer, 203 - Centro</string>
+    <string name="biz_1_phone">(35) 3423-0000</string>
+    <string name="biz_1_web">https://www.costelanobafo.com.br</string>
+    <string name="biz_1_cat">FOOD_BEVERAGE</string>
+
+    <string name="biz_2_name">Serra Sul Shopping</string>
+    <string name="biz_2_desc">O principal centro de compras e lazer do Sul de Minas.</string>
+    <string name="biz_2_address">BR-459, Km 107 - Ipiranga</string>
+    <string name="biz_2_phone">(35) 3427-4100</string>
+    <string name="biz_2_web">https://www.serrasulshopping.com.br</string>
+    <string name="biz_2_cat">SHOPPING_RETAIL</string>
+
+    <string name="biz_3_name">Hospital Samuel Libânio</string>
+    <string name="biz_3_desc">Referência em saúde e atendimento médico hospitalar na região.</string>
+    <string name="biz_3_address">R. Comendador José Garcia, 777 - Centro</string>
+    <string name="biz_3_phone">(35) 3429-3200</string>
+    <string name="biz_3_web">https://www.hpsl.org.br</string>
+    <string name="biz_3_cat">HEALTH_BEAUTY</string>
+
+    <string name="biz_4_name">Parque Natural Municipal de Pouso Alegre</string>
+    <string name="biz_4_desc">Área verde preservada ideal para trilhas, piqueniques e contato com a natureza (Horto).</string>
+    <string name="biz_4_address">R. Geraldo dos Reis, s/n - Árvore Grande</string>
+    <string name="biz_4_phone">(35) 3449-4122</string>
+    <string name="biz_4_web">https://pousoalegre.mg.gov.br</string>
+    <string name="biz_4_cat">ENTERTAINMENT_LEISURE</string>
+
+    <string name="biz_5_name">ABC Atacado da Construção</string>
+    <string name="biz_5_desc">Tudo para reforma e construção, de pisos a acabamentos finos.</string>
+    <string name="biz_5_address">Av. Pref. Tuany Toledo, 545 - Fátima</string>
+    <string name="biz_5_phone">(35) 3421-4400</string>
+    <string name="biz_5_web">https://www.abcda-construcao.com.br</string>
+    <string name="biz_5_cat">HOME_IMPROVEMENT_CONSTRUCTION</string>
+
+    <string name="biz_6_name">Pavis Pouso Alegre</string>
+    <string name="biz_6_desc">Laboratório de análises clínicas com tecnologia de ponta e rapidez nos resultados.</string>
+    <string name="biz_6_address">R. Silviano Brandão, 455 - Centro</string>
+    <string name="biz_6_phone">(35) 3421-2233</string>1
+    <string name="biz_6_web">https://www.pavis.com.br</string>
+    <string name="biz_6_cat">HEALTH_BEAUTY</string>
+
+    <string name="biz_7_name">Livraria Nobel</string>
+    <string name="biz_7_desc">O melhor refúgio para amantes de livros e café no centro da cidade.</string>
+    <string name="biz_7_address">Av. Dr. Lisboa, 150 - Centro</string>
+    <string name="biz_7_phone">(35) 3422-8899</string>
+    <string name="biz_7_web">https://www.livrarianobel.com.br</string>
+    <string name="biz_7_cat">SHOPPING_RETAIL</string>
+
+    <string name="biz_8_name">Correios - Agência Central</string>
+    <string name="biz_8_desc">Serviços postais, entrega de encomendas e soluções logísticas.</string>
+    <string name="biz_8_address">Praça Senador José Bento, 58 - Centro</string>
+    <string name="biz_8_phone">(35) 3423-1010</string>
+    <string name="biz_8_web">https://www.correios.com.br</string>
+    <string name="biz_8_cat">SERVICES</string>
+
+    <string name="biz_9_name">Teatro Municipal de Pouso Alegre</string>
+    <string name="biz_9_desc">Centro cultural histórico com apresentações de teatro, música e dança.</string>
+    <string name="biz_9_address">Av. Dr. Lisboa, 121 - Centro</string>
+    <string name="biz_9_phone">(35) 3449-4123</string>
+    <string name="biz_9_web">https://pousoalegre.mg.gov.br/cultura</string>
+    <string name="biz_9_cat">ENTERTAINMENT_LEISURE</string>
+
+    <string name="biz_10_name">Burguer da Vila</string>
+    <string name="biz_10_desc">Hambúrgueres artesanais grelhados no fogo, com ingredientes locais selecionados.</string>
+    <string name="biz_10_address">Av. Prefeito Sapucaí, 320 - Medicina</string>
+    <string name="biz_10_phone">(35) 99888-7766</string>
+    <string name="biz_10_web">https://www.burguerdavila.com.br</string>
+    <string name="biz_10_cat">FOOD_BEVERAGE</string>
+
+    <string name="biz_11_name">Madeireira Pouso Alegre</string>
+    <string name="biz_11_desc">Especialista em telhados, esquadrias e madeiras brutas para sua obra.</string>
+    <string name="biz_11_address">Av. Vereador Antônio da Costa Rios, 800</string>
+    <string name="biz_11_phone">(35) 3425-5544</string>
+    <string name="biz_11_web">https://www.madeireirapa.com.br</string>
+    <string name="biz_11_cat">HOME_IMPROVEMENT_CONSTRUCTION</string>
+
+    <string name="biz_12_name">Caixa Econômica Federal</string>
+    <string name="biz_12_desc">Serviços bancários, financiamento habitacional e benefícios sociais.</string>
+    <string name="biz_12_address">R. Adolfo Olinto, 400 - Centro</string>
+    <string name="biz_12_phone">(35) 3449-2000</string>
+    <string name="biz_12_web">https://www.caixa.gov.br</string>
+    <string name="biz_12_cat">SERVICES</string>
+
+    <string name="biz_13_name">Mercado Municipal</string>
+    <string name="biz_13_desc">Tradição mineira: queijos, doces, especiarias e o famoso pastel de Pouso Alegre.</string>
+    <string name="biz_13_address">Av. Duque de Caxias, s/n - Centro</string>
+    <string name="biz_13_phone">(35) 3449-4000</string>
+    <string name="biz_13_web">https://pousoalegre.mg.gov.br/turismo</string>
+    <string name="biz_13_cat">SHOPPING_RETAIL</string>
+
+    <string name="biz_14_name">Drogaria Americana</string>
+    <string name="biz_14_desc">Farmácia completa com perfumaria e atendimento farmacêutico 24 horas.</string>
+    <string name="biz_14_address">Av. Dr. Lisboa, 50 - Centro</string>
+    <string name="biz_14_phone">(35) 3421-1212</string>
+    <string name="biz_14_web">https://www.drogariaamericana.com.br</string>
+    <string name="biz_14_cat">HEALTH_BEAUTY</string>
+
+    <string name="biz_15_name">Padaria Central</string>
+    <string name="biz_15_desc">O melhor pão de queijo da Praça Senador José Bento e buffet de café da manhã.</string>
+    <string name="biz_15_address">Praça Senador José Bento, 10 - Centro</string>
+    <string name="biz_15_phone">(35) 3423-5566</string>
+    <string name="biz_15_web">https://www.padariacentralpa.com.br</string>
+    <string name="biz_15_cat">FOOD_BEVERAGE</string>
 </resources>
