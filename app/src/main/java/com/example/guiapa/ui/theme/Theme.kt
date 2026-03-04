@@ -7,14 +7,33 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 
 @Immutable
 data class ExtendedColorScheme(
     val customColor1: ColorFamily,
 )
+
+data class AppDimensions(
+    val paddingSmall: Dp = 4.dp,    val paddingMedium: Dp = 8.dp,
+    val paddingLarge: Dp = 16.dp,
+    val cardElevation: Dp = 2.dp,
+    val imageHeight: Dp = 200.dp
+)
+
+val LocalAppDimensions = androidx.compose.runtime.staticCompositionLocalOf { AppDimensions() }
+
+object AppTheme{
+    val dimensions: AppDimensions
+        @Composable
+        get() = LocalAppDimensions.current
+}
+
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -326,11 +345,14 @@ fun GuiaPATheme(
       darkTheme -> darkScheme
       else -> lightScheme
   }
+    val dimensions = AppDimensions()
 
-  MaterialTheme(
-    colorScheme = colorScheme,
-    typography = AppTypography,
-    content = content
-  )
+    CompositionLocalProvider(LocalAppDimensions provides dimensions) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = AppTypography,
+            content = content
+        )
+    }
 }
 
