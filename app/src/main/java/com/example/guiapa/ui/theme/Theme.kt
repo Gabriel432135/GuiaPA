@@ -6,9 +6,13 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
@@ -23,10 +27,11 @@ data class AppDimensions(
     val paddingSmall: Dp = 4.dp,    val paddingMedium: Dp = 8.dp,
     val paddingLarge: Dp = 16.dp,
     val cardElevation: Dp = 2.dp,
-    val imageHeight: Dp = 200.dp
+    val imageHeight: Dp = 200.dp,
+    val columnCount: Int = 1 // Valor padrão é 1 (celular)
 )
 
-val LocalAppDimensions = androidx.compose.runtime.staticCompositionLocalOf { AppDimensions() }
+val LocalAppDimensions = staticCompositionLocalOf { AppDimensions() }
 
 object AppTheme{
     val dimensions: AppDimensions
@@ -331,6 +336,7 @@ val unspecified_scheme = ColorFamily(
 
 @Composable
 fun GuiaPATheme(
+    windowSize: WindowSizeClass? = null,
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
@@ -341,11 +347,18 @@ fun GuiaPATheme(
           val context = LocalContext.current
           if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
       }
-      
+
       darkTheme -> darkScheme
       else -> lightScheme
   }
-    val dimensions = AppDimensions()
+
+
+
+    val dimensions: AppDimensions = if(windowSize?.widthSizeClass == WindowWidthSizeClass.Expanded){
+        AppDimensions(columnCount = 2)
+    }else {
+        AppDimensions(columnCount = 1)
+    }
 
     CompositionLocalProvider(LocalAppDimensions provides dimensions) {
         MaterialTheme(

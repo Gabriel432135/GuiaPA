@@ -2,10 +2,15 @@ package com.example.guiapa.ui.screens
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -67,10 +72,31 @@ fun BusinessCard(modifier: Modifier = Modifier, business: Business) {
     }
 }
 
+@Composable
+fun BusinessList(modifier: Modifier = Modifier, businesses: List<Business>) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(AppTheme.dimensions.paddingMedium),
+        verticalArrangement = Arrangement.spacedBy(AppTheme.dimensions.paddingMedium)
+    ) {
+        items(businesses) { business ->
+            BusinessCard(business = business)
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun BusinessPreview() {
     GuiaPATheme {
         BusinessCard(business = LocalBusinessProvider.getBusinessList(LocalContext.current)[0])
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BusinessListPreview() {
+    GuiaPATheme {
+        BusinessList(businesses = LocalBusinessProvider.getBusinessList(LocalContext.current))
     }
 }
