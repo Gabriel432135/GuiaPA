@@ -1,7 +1,9 @@
 package com.example.guiapa.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -14,6 +16,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -33,10 +36,23 @@ data class AppDimensions(
 
 val LocalAppDimensions = staticCompositionLocalOf { AppDimensions() }
 
+data class AppShape(
+    val small: Shape = RoundedCornerShape(4.dp),
+    val medium: Shape = RoundedCornerShape(8.dp),
+    val large: Shape = RoundedCornerShape(16.dp)
+)
+
+val LocalAppShape = staticCompositionLocalOf { AppShape() }
+
+
 object AppTheme{
     val dimensions: AppDimensions
         @Composable
         get() = LocalAppDimensions.current
+
+    val shape: AppShape
+        @Composable
+        get() = LocalAppShape.current
 }
 
 
@@ -360,7 +376,13 @@ fun GuiaPATheme(
         AppDimensions(columnCount = 1)
     }
 
-    CompositionLocalProvider(LocalAppDimensions provides dimensions) {
+    val shape = AppShape()
+
+
+    CompositionLocalProvider(
+        LocalAppDimensions provides dimensions,
+        LocalAppShape provides shape
+    ) {
         MaterialTheme(
             colorScheme = colorScheme,
             typography = AppTypography,
