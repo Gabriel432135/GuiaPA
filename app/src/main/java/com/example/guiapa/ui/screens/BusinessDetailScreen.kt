@@ -8,14 +8,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
@@ -109,14 +107,14 @@ fun BusinessDetailScreen(modifier: Modifier = Modifier, business: Business){
             // ENDEREÇO: Label informativo
             Text(
                 text = business.address,
-                style = MaterialTheme.typography.labelMedium,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant // Cor mais suave para info secundária
             )
 
             // CONTATOS: Texto menor/auxiliar
             Text(
                 text = "${business.phone} • ${business.website}",
-                style = MaterialTheme.typography.labelSmall,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.primary // Destaque em cor para link/contato
             )
         }
@@ -130,13 +128,9 @@ fun RowScope.IconButton(onClick: ()-> Unit, icon: ImageVector, contentDescriptio
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .padding(bottom = AppTheme.dimensions.paddingSmall)
-            // 1. Primeiro definimos a forma (clip)
-            .clip(AppTheme.shape.large) // Use aqui o seu shape do tema
-            // 2. Depois pintamos o fundo (ele respeitará o clip anterior)
+            .clip(AppTheme.shape.large)
             .background(color = MaterialTheme.colorScheme.surfaceVariant)
-            // 3. Tornamos clicável
             .clickable { onClick() }
-            // 4. Padding interno para o conteúdo não encostar na borda do botão
             .padding(horizontal = AppTheme.dimensions.paddingMedium, vertical = AppTheme.dimensions.paddingSmall)
             .weight(weight),
     ) {
