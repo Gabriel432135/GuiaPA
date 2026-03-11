@@ -39,7 +39,12 @@ val LocalAppDimensions = staticCompositionLocalOf { AppDimensions() }
 data class AppShape(
     val small: Shape = RoundedCornerShape(4.dp),
     val medium: Shape = RoundedCornerShape(8.dp),
-    val large: Shape = RoundedCornerShape(16.dp)
+    val large: Shape = RoundedCornerShape(16.dp),
+
+    val smallHalf: Shape = RoundedCornerShape(bottomStart = 4.dp, bottomEnd = 4.dp),
+    val mediumHalf: Shape = RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp),
+    val largeHalf: Shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp),
+
 )
 
 val LocalAppShape = staticCompositionLocalOf { AppShape() }
