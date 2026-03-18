@@ -43,11 +43,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.guiapa.model.Category
 import com.example.guiapa.ui.theme.AppTheme
 import com.example.guiapa.ui.theme.GuiaPATheme
 
 @Composable
-fun BusinessCategoryList(modifier: Modifier = Modifier){
+fun BusinessCategoryList(
+    modifier: Modifier = Modifier,
+    onClick: (Category)->Unit
+){
     val scrolState = rememberScrollState()
     Column(
         verticalArrangement = Arrangement.spacedBy(AppTheme.dimensions.paddingMedium),
@@ -58,13 +62,13 @@ fun BusinessCategoryList(modifier: Modifier = Modifier){
     ){
         Row(horizontalArrangement = Arrangement.spacedBy(AppTheme.dimensions.paddingMedium)) {
             IconCategoryButton(
-                onClick = {},
+                onClick = {onClick(Category.FOOD_BEVERAGE)},
                 icon = Icons.Default.Fastfood,
                 contentDescription = "Restaurantes e Lanchonetes",
                 contentText = "Restaurantes e Lanchonetes"
             )
             IconCategoryButton(
-                onClick = {},
+                onClick = {onClick(Category.HEALTH_BEAUTY)},
                 icon = Icons.Default.AutoFixHigh,
                 contentDescription = "Saúde e Beleza",
                 contentText = "Saúde e Beleza"
@@ -72,13 +76,13 @@ fun BusinessCategoryList(modifier: Modifier = Modifier){
         }
         Row(horizontalArrangement = Arrangement.spacedBy(AppTheme.dimensions.paddingMedium)) {
             IconCategoryButton(
-                onClick = {},
+                onClick = {onClick(Category.SHOPPING_RETAIL)},
                 icon = Icons.Default.LocalGroceryStore,
                 contentDescription = "Compras e Varejo",
                 contentText = "Compras e Varejo"
             )
             IconCategoryButton(
-                onClick = {},
+                onClick = {onClick(Category.SERVICES)},
                 icon = Icons.Default.HomeRepairService,
                 contentDescription = "Serviços",
                 contentText = "Serviços"
@@ -86,13 +90,13 @@ fun BusinessCategoryList(modifier: Modifier = Modifier){
         }
         Row(horizontalArrangement = Arrangement.spacedBy(AppTheme.dimensions.paddingMedium)){
             IconCategoryButton(
-                onClick = {},
+                onClick = {onClick(Category.ENTERTAINMENT_LEISURE)},
                 icon = Icons.Default.TheaterComedy,
                 contentDescription = "Entretenimento e Lazer",
                 contentText = "Entretenimento e Lazer"
             )
             IconCategoryButton(
-                onClick = {},
+                onClick = {onClick(Category.HOME_IMPROVEMENT_CONSTRUCTION)},
                 icon = Icons.Default.Construction,
                 contentDescription = "Reformas e Construção",
                 contentText = "Reformas e Construção"
@@ -107,7 +111,7 @@ fun BusinessCategoryList(modifier: Modifier = Modifier){
 @Composable
 fun BusinessCategoryListPreview() {
     GuiaPATheme {
-        BusinessCategoryList()
+        BusinessCategoryList(onClick = {})
     }
 }
 
