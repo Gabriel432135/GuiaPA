@@ -39,7 +39,7 @@ import com.example.guiapa.ui.theme.AppTheme
 import com.example.guiapa.ui.theme.GuiaPATheme
 
 @Composable
-fun BusinessDetailScreen(modifier: Modifier = Modifier, business: Business){
+fun BusinessDetailScreen(modifier: Modifier = Modifier, business: Business, onBackClick: () -> Unit){
 
     val scrolState = rememberScrollState()
     val configuration = LocalConfiguration.current
@@ -153,6 +153,6 @@ fun RowScope.IconButton(onClick: ()-> Unit, icon: ImageVector, contentDescriptio
 @Composable
 fun BusinessDetailScreenPreview() {
     GuiaPATheme {
-        BusinessDetailScreen(business = LocalBusinessProvider.getBusinessList(LocalContext.current)[0])
+        BusinessDetailScreen(business = LocalBusinessProvider.getBusinessList(LocalContext.current)[0], onBackClick = {})
     }
 }

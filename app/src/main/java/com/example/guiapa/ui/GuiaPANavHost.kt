@@ -7,6 +7,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.guiapa.model.Category
+import com.example.guiapa.ui.screens.BusinessDetailScreen
+import com.example.guiapa.ui.screens.BusinessList
 import com.example.guiapa.ui.screens.HomeScreen
 import kotlinx.serialization.Serializable
 
@@ -32,12 +35,34 @@ fun GuiaPANavHost(
         startDestination = HomeRoute,
         modifier = modifier
     ){
-        composable<HomeRoute>{
+        composable<HomeRoute> {
             HomeScreen(
                 onCategoryClick = { category ->
                     viewModel.updateCurrentCategory(category)
+                    navController.navigate(BusinessListRoute)
                 }
             )
+        }
+
+
+        composable<BusinessListRoute> {
+            BusinessList(
+                businesses = viewModel.filteredBusinesses,
+                onBusinessClick = { business ->
+                    viewModel.updateSelectedBusiness(business)
+                    navController.navigate(BusinessDetailRoute)
+                },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+
+        composable<BusinessDetailRoute> {
+            uiState.selectedBusiness?.let { business ->
+                BusinessDetailScreen(
+                    business = business,
+                    onBackClick = { navController.popBackStack() }
+                )
+            }
         }
     }
 }

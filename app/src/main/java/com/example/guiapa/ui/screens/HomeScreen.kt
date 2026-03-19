@@ -28,11 +28,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.guiapa.R
+import com.example.guiapa.model.Category
 import com.example.guiapa.ui.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(onCategoryClick: (String) -> Unit) {
+fun HomeScreen(onCategoryClick: (Category) -> Unit) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     Scaffold(
@@ -103,7 +104,6 @@ fun HomeScreen(onCategoryClick: (String) -> Unit) {
                     color = Color.White.copy(alpha = 0.8f)
                 )
             }
-            // 3. O CONTEÚDO DA LISTA
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -112,7 +112,11 @@ fun HomeScreen(onCategoryClick: (String) -> Unit) {
                 Spacer(modifier = Modifier
                     .height(84.dp * (1 - scrollBehavior.state.collapsedFraction))
                 )
-                BusinessCategoryList()
+                BusinessCategoryList(
+                    onClick = { category ->
+                        onCategoryClick(category)
+                    }
+                )
             }
         }
     }

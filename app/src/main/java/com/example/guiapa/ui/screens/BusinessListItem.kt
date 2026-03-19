@@ -2,6 +2,7 @@ package com.example.guiapa.ui.screens
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,7 +28,9 @@ import com.example.guiapa.ui.theme.GuiaPATheme
 
 @Composable
 fun BusinessCard(modifier: Modifier = Modifier, business: Business) {
-    Card(modifier = modifier) {
+    Card(
+        modifier = modifier.clickable{}
+    ) {
         Column(modifier = Modifier) {
             Image(
                 painter = painterResource(business.imageRes),
@@ -73,7 +76,7 @@ fun BusinessCard(modifier: Modifier = Modifier, business: Business) {
 }
 
 @Composable
-fun BusinessList(modifier: Modifier = Modifier, businesses: List<Business>) {
+fun BusinessList(modifier: Modifier = Modifier, businesses: List<Business>, onBusinessClick: (Business) -> Unit = {}, onBackClick:()->Unit) {
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(AppTheme.dimensions.paddingMedium),
@@ -97,6 +100,6 @@ fun BusinessPreview() {
 @Composable
 fun BusinessListPreview() {
     GuiaPATheme {
-        BusinessList(businesses = LocalBusinessProvider.getBusinessList(LocalContext.current))
+        BusinessList(businesses = LocalBusinessProvider.getBusinessList(LocalContext.current), onBusinessClick = {}, onBackClick = {})
     }
 }
