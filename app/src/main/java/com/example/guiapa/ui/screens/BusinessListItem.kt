@@ -27,9 +27,9 @@ import com.example.guiapa.ui.theme.AppTheme
 import com.example.guiapa.ui.theme.GuiaPATheme
 
 @Composable
-fun BusinessCard(modifier: Modifier = Modifier, business: Business) {
+fun BusinessCard(modifier: Modifier = Modifier, business: Business, onClick: () -> Unit = {}) {
     Card(
-        modifier = modifier.clickable{}
+        modifier = modifier.clickable{onClick()}
     ) {
         Column(modifier = Modifier) {
             Image(
@@ -76,14 +76,18 @@ fun BusinessCard(modifier: Modifier = Modifier, business: Business) {
 }
 
 @Composable
-fun BusinessList(modifier: Modifier = Modifier, businesses: List<Business>, onBusinessClick: (Business) -> Unit = {}, onBackClick:()->Unit) {
+fun BusinessList(
+    modifier: Modifier = Modifier,
+     businesses: List<Business>,
+     onBusinessClick: (Business) -> Unit = {},
+     onBackClick:()->Unit) {
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(AppTheme.dimensions.paddingMedium),
         verticalArrangement = Arrangement.spacedBy(AppTheme.dimensions.paddingMedium)
     ) {
         items(businesses) { business ->
-            BusinessCard(business = business)
+            BusinessCard(business = business, onClick = { onBusinessClick(business) })
         }
     }
 }

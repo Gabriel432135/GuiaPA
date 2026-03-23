@@ -39,7 +39,13 @@ import com.example.guiapa.ui.theme.AppTheme
 import com.example.guiapa.ui.theme.GuiaPATheme
 
 @Composable
-fun BusinessDetailScreen(modifier: Modifier = Modifier, business: Business, onBackClick: () -> Unit){
+fun BusinessDetailScreen(
+    modifier: Modifier = Modifier,
+     business: Business,
+     onBackClick: () -> Unit,
+     onCallClick: () -> Unit = {},
+     onLocationClick: () -> Unit = {},
+     onWebClick: () -> Unit = {}){
 
     val scrolState = rememberScrollState()
     val configuration = LocalConfiguration.current
@@ -84,19 +90,19 @@ fun BusinessDetailScreen(modifier: Modifier = Modifier, business: Business, onBa
                 horizontalArrangement = Arrangement.spacedBy(AppTheme.dimensions.paddingSmall)
             ){
                 IconButton(
-                    onClick = {},
+                    onClick = onCallClick,
                     icon = Icons.Default.Phone,
                     contentDescription = "Ligar",
                     contentText = "Ligar"
                 )
                 IconButton(
-                    onClick = {},
+                    onClick = onLocationClick,
                     icon = Icons.Default.LocationOn,
                     contentDescription = "Endereço",
                     contentText = "Endereço"
                 )
                 IconButton(
-                    onClick = {},
+                    onClick = onWebClick,
                     icon = Icons.Default.Web,
                     contentDescription = "Site",
                     contentText = "Site"

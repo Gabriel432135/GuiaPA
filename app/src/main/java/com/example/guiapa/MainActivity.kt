@@ -14,6 +14,11 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.rememberNavController
+import com.example.guiapa.ui.BusinessViewModel
+import com.example.guiapa.ui.GuiaPANavHost
+import com.example.guiapa.ui.screens.HomeScreen
 import com.example.guiapa.ui.theme.GuiaPATheme
 
 class MainActivity : ComponentActivity() {
@@ -25,28 +30,11 @@ class MainActivity : ComponentActivity() {
             val windowSize: WindowSizeClass = calculateWindowSizeClass(this)
             GuiaPATheme(windowSize = windowSize) {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    GuiaPANavHost(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    GuiaPATheme{
-        Greeting("Android")
     }
 }

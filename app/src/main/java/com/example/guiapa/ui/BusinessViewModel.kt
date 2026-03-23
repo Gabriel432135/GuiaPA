@@ -18,7 +18,7 @@ class BusinessViewModel(application: Application): AndroidViewModel(application)
 
     val filteredBusinesses: List<Business>
         get() = if(uiState.value.selectedCategory == null){
-            _uiState.value.business
+            uiState.value.business
         }else{
             filteredBusinesses(uiState.value.selectedCategory!!)
         }
@@ -60,6 +60,10 @@ class BusinessViewModel(application: Application): AndroidViewModel(application)
         return _uiState.value.business.filter { business ->
             business.category == category
         }
+
+    }
+
+    fun callAction(){
 
     }
 
