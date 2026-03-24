@@ -63,8 +63,4 @@ class BusinessViewModel(application: Application): AndroidViewModel(application)
 
     }
 
-    fun callAction(){
-
-    }
-
 }
