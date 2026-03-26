@@ -28,8 +28,8 @@ class BusinessDetailScreenTest{
         imageRes = android.R.drawable.ic_menu_gallery
     )
 
-    @Before
-    fun setupBusinessDetailScreen(){
+    @Test
+    fun detailScreen_displaysBusinessInfo() {
         composeTestRule.setContent {
             GuiaPATheme() {
                 BusinessDetailScreen(
@@ -41,10 +41,6 @@ class BusinessDetailScreenTest{
                 )
             }
         }
-    }
-
-    @Test
-    fun detailScreen_displaysBusinessInfo() {
         composeTestRule.onNodeWithText("Café do Zé").assertIsDisplayed()
         composeTestRule.onNodeWithText("Melhor café de Pouso Alegre").assertIsDisplayed()
     }
