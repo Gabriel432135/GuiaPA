@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.guiapa.model.Category
 import com.example.guiapa.ui.screens.BusinessDetailScreen
 import com.example.guiapa.ui.screens.BusinessList
+import com.example.guiapa.ui.screens.BusinessListDetail
 import com.example.guiapa.ui.screens.HomeScreen
 import kotlinx.serialization.Serializable
 
@@ -26,6 +27,9 @@ object BusinessListRoute
 
 @Serializable
 object BusinessDetailRoute
+
+@Serializable
+object BusinessListDetail
 
 @Composable
 fun GuiaPANavHost(
@@ -87,6 +91,18 @@ fun GuiaPANavHost(
                         context.startActivity(intent)
                     }
 
+                )
+            }
+        }
+        composable<BusinessListDetail>{
+            uiState.selectedCategory?.let{ category ->
+                BusinessListDetail(
+                    businessList = viewModel.filteredBusinesses,
+                    onBackClick = {navController.popBackStack()},
+                    selectedBusiness = uiState.selectedBusiness,
+                    onBusinessClick = { business ->
+                        viewModel.updateSelectedBusiness(business)
+                    }
                 )
             }
         }
