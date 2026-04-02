@@ -2,6 +2,7 @@ package com.example.guiapa.ui
 
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -17,6 +18,8 @@ import com.example.guiapa.ui.screens.BusinessDetailScreen
 import com.example.guiapa.ui.screens.BusinessList
 import com.example.guiapa.ui.screens.BusinessListDetail
 import com.example.guiapa.ui.screens.HomeScreen
+import com.example.guiapa.ui.theme.AppDimensions
+import com.example.guiapa.ui.theme.AppTheme
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -29,7 +32,7 @@ object BusinessListRoute
 object BusinessDetailRoute
 
 @Serializable
-object BusinessListDetail
+object BusinessListDetailRoute
 
 @Composable
 fun GuiaPANavHost(
@@ -47,10 +50,15 @@ fun GuiaPANavHost(
         modifier = modifier
     ){
         composable<HomeRoute> {
+            val isSmartphone = AppTheme.dimensions.columnCount == 1
             HomeScreen(
                 onCategoryClick = { category ->
                     viewModel.updateCurrentCategory(category)
-                    navController.navigate(BusinessListRoute)
+                    if(isSmartphone) {
+                        navController.navigate(BusinessListRoute)
+                    }else{
+                        navController.navigate(BusinessListDetailRoute)
+                    }
                 }
             )
         }
@@ -94,7 +102,7 @@ fun GuiaPANavHost(
                 )
             }
         }
-        composable<BusinessListDetail>{
+        composable<BusinessListDetailRoute>{
             uiState.selectedCategory?.let{ category ->
                 BusinessListDetail(
                     businessList = viewModel.filteredBusinesses,
