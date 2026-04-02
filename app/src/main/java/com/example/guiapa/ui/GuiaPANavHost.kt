@@ -57,6 +57,7 @@ fun GuiaPANavHost(
                     if(isSmartphone) {
                         navController.navigate(BusinessListRoute)
                     }else{
+                        viewModel.updateSelectedBusiness(viewModel.filteredBusinesses.first())
                         navController.navigate(BusinessListDetailRoute)
                     }
                 }
@@ -110,6 +111,24 @@ fun GuiaPANavHost(
                     selectedBusiness = uiState.selectedBusiness,
                     onBusinessClick = { business ->
                         viewModel.updateSelectedBusiness(business)
+                    },
+                    onCallClick = {
+                        val intent = Intent(Intent.ACTION_DIAL).apply {
+                            data = Uri.parse("tel:${uiState.selectedBusiness?.phone}")
+                        }
+                        context.startActivity(intent)
+                    },
+                    onWebClick = {
+                        val intent = Intent(Intent.ACTION_VIEW).apply {
+                            data = Uri.parse(uiState.selectedBusiness?.website)
+                        }
+                        context.startActivity(intent)
+                    },
+                    onLocationClick = {
+                        val intent = Intent(Intent.ACTION_VIEW).apply{
+                            data = Uri.parse("geo:0,0?q=${Uri.encode(uiState.selectedBusiness?.address)}")
+                        }
+                        context.startActivity(intent)
                     }
                 )
             }

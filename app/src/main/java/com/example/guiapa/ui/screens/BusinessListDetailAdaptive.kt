@@ -19,7 +19,13 @@ fun BusinessListDetail(
     businessList: List<Business> = emptyList(),
     selectedBusiness: Business? = null,
     onBusinessClick: (Business) -> Unit = {},
-    onBackClick: () -> Unit = {}
+    onBackClick: () -> Unit = {},
+
+    onCallClick: () -> Unit = {},
+    onLocationClick: () -> Unit = {},
+    onWebClick: () -> Unit = {}
+
+
 ){
     Row(modifier = modifier.fillMaxSize()) {
         BusinessList(
@@ -33,7 +39,10 @@ fun BusinessListDetail(
             BusinessDetailScreen(
                 business = business,
                 onBackClick = onBackClick,
-                modifier = Modifier.weight(1.5f)
+                modifier = Modifier.weight(1.5f),
+                onCallClick = {onCallClick()},
+                onLocationClick = {onLocationClick()},
+                onWebClick = {onWebClick()}
             )
         } ?: Box(modifier = Modifier.weight(1.5f)) {
             Text("Selecione um local", modifier = Modifier.align(Alignment.Center))
